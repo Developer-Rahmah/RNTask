@@ -1,0 +1,15 @@
+{
+
+  "extends": "expo/tsconfig.base",
+  "scripts":"true",
+  "compilerOptions": {
+
+    "baseUrl": ".",
+    "paths": {
+      "RNTask/*": ["*"]
+    },
+     "lib": [
+       "es5", "es6", "dom", "dom.iterable"
+     ]
+  }
+}
