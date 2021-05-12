@@ -9,7 +9,6 @@ export default function Input ({
   label,
   keyboardType
 }: {
-  onBlur?: () => void
   onChangeText?: any
   value?: string
   label: string

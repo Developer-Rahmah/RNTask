@@ -1,22 +1,21 @@
 import { Entypo } from '@expo/vector-icons'
-import AsyncStorage from '@react-native-community/async-storage'
 import React, { useContext, useEffect } from 'react'
 import { View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styles from 'RNTask/assets/styles'
 import Colors from 'RNTask/assets/styles/Colors'
-import { ItemContext } from '../context/ItemContext'
-import Summary from '../elements/Summary'
-import Title from '../elements/Title'
+import { ItemContext } from 'RNTask/src/context/ItemContext'
+import Summary from 'RNTask/src/elements/Summary'
+import Title from 'RNTask/src/elements/Title'
+import LocalStorage from 'RNTask/src/services/helper/LocalStorage'
 export default function Alert ({ item, onCancel }) {
   const [items, setItems] = useContext(ItemContext)
   const onDelete = () => {
     setItems(items.filter(it => it !== item))
     if (items.length == 1) {
       setItems([])
-
-      AsyncStorage.setItem('products', JSON.stringify([]))
-      AsyncStorage.removeItem('products')
+      LocalStorage.set('products', [])
+      LocalStorage.remove('products')
     }
 
     onCancel()

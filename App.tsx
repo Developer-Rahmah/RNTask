@@ -2,8 +2,8 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import AppNavigator from 'RNTask/src/navigations/AppNavigator'
 import StatusBar from 'RNTask/src/layout/statusBar/index'
-import { ItemProvider } from './src/context/ItemContext'
-import { AlertProvider } from './src/context/AlertContext'
+import { ItemProvider } from 'RNTask/src/context/ItemContext'
+import { AlertProvider } from 'RNTask/src/context/AlertContext'
 
 const App = () => {
   return (

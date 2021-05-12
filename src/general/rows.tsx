@@ -2,7 +2,7 @@ import React from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import Col from 'RNTask/src/general/Col'
 import EmptyListMessage from 'RNTask/src/general/EmptyListMessage'
-import { Product } from '../types/Product'
+import { Product } from 'RNTask/src/types/Product'
 
 export default function Rows ({
   showsVerticalScrollIndicator = false,

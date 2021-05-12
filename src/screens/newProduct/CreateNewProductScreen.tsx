@@ -11,12 +11,11 @@ import styles from 'RNTask/assets/styles'
 import Button from 'RNTask/src/general/Button'
 import { useNavigation } from '@react-navigation/core'
 import { ItemContext } from 'RNTask/src/context/ItemContext'
-import AsyncStorage from '@react-native-community/async-storage'
 import { ProductType } from 'RNTask/src/types/ProductType'
+import LocalStorage from 'RNTask/src/services/helper/LocalStorage'
 
 export default function CreateNewProductScreen () {
   const [items, setItems] = useContext(ItemContext)
-  const [disableSaveBtnBtn, setDisableSaveBtnBtn] = useState(true)
   const navigation = useNavigation()
 
   const {
@@ -34,7 +33,7 @@ export default function CreateNewProductScreen () {
       setItems([...prevItems, data])
       const products = [...prevItems, data]
 
-      AsyncStorage.setItem('products', JSON.stringify(products))
+      LocalStorage.set('products', products)
     })
 
     navigation.goBack()
@@ -59,10 +58,9 @@ export default function CreateNewProductScreen () {
 
           <Controller
             control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, value } }) => (
               <Input
                 label='Name'
-                onBlur={onBlur}
                 onChangeText={value => onChange(value)}
                 value={value}
               />
@@ -74,10 +72,9 @@ export default function CreateNewProductScreen () {
 
           <Controller
             control={control}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, value } }) => (
               <Input
                 label='Price'
-                onBlur={onBlur}
                 onChangeText={value => onChange(value)}
                 value={value}
                 keyboardType='decimal-pad'

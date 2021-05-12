@@ -10,16 +10,14 @@ import Rows from 'RNTask/src/general/rows'
 import Header from 'RNTask/src/layout/Header'
 import ProductCard from './displays/ProductCard'
 import { AlertContext } from 'RNTask/src/context/AlertContext'
-import AsyncStorage from '@react-native-community/async-storage'
 import { Modal } from 'react-native'
+import LocalStorage from 'RNTask/src/services/helper/LocalStorage'
 
 const ProductsScreen = () => {
   const navigation = useNavigation()
   const [items, setItems] = useContext(ItemContext)
   const [selectedItem, setSelectedItem] = useState()
-
   const [showAlert, setShowAlert] = useContext(AlertContext)
-
   const removeItem = item => {
     setShowAlert(true)
     setSelectedItem(item)
@@ -27,7 +25,7 @@ const ProductsScreen = () => {
 
   useEffect(() => {
     if (items.length > 0) {
-      AsyncStorage.setItem('products', JSON.stringify(items))
+      LocalStorage.set('products', items)
       setItems(items)
     }
   }, [showAlert])

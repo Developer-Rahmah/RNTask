@@ -8,7 +8,6 @@ export default function Container ({
   ...rest
 }: {
   children?: JSX.Element
-
   style?: object
 }) {
   return (

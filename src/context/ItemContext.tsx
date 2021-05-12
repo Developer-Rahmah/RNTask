@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
-import LocalStorage from '../services/helper/LocalStorage'
+import LocalStorage from 'RNTask/src/services/helper/LocalStorage'
 
 export const ItemContext = createContext(undefined)
 
